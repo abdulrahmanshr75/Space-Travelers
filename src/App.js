@@ -1,12 +1,23 @@
 import './App.css';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import NavBar from './Pages/NavBar';
+import MyProfile from './components/MyProfile';
+import Rockets from './components/Rockets';
 
 function App() {
   return (
     <div className="App">
-      <div className="App">
+      <Router>
         <NavBar />
-      </div>
+        <Switch>
+          <Route exact path="/">
+            <Rockets />
+          </Route>
+          <Route path="/MyProfile">
+            <MyProfile />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
