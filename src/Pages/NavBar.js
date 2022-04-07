@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+
 import Header from './Header';
 
 const NavBar = () => {
@@ -28,7 +29,7 @@ const NavBar = () => {
             <li key={link.id} className="navLink">
               <NavLink
                 to={link.path}
-                exact={true}
+                exact
                 data-testid={link.id}
                 activeClassName="active"
               >

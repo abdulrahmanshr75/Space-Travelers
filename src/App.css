@@ -12,6 +12,7 @@ ul {
 }
 
 .App {
+<<<<<<< HEAD
   width: 100%;
   margin: 0 auto;
 }
@@ -35,6 +36,23 @@ ul {
   padding: 0.8rem 0;
 }
 
+=======
+  width: 90%;
+  margin: 0 auto;
+}
+
+.logoImg {
+  width: 50px;
+}
+
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+>>>>>>> 356bd0536886f245e34226d38176bfa83baa0628
 .headerWrap {
   display: flex;
   align-items: center;
@@ -45,6 +63,7 @@ ul {
   display: flex;
   align-items: center;
   column-gap: 1rem;
+<<<<<<< HEAD
 }
 
 .navLink {
@@ -62,4 +81,14 @@ ul {
 a {
   text-decoration: none;
   color: #0a7fff;
+=======
+}
+
+.navLink {
+  padding: 0 0.5rem;
+}
+
+.navLink:last-child {
+  border-left: 2px solid;
+>>>>>>> 356bd0536886f245e34226d38176bfa83baa0628
 }
