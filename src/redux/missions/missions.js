@@ -1,67 +1,53 @@
-import getMissions from '../../getMissions';
+const url = 'https://api.spacexdata.com/v3/missions';
 
-const LOAD_MISSIONS = 'space-travelers-hub/missions/LOAD_MISSIONS';
-const JOIN_MISSION = 'space-travelers-hub/missions/JOIN_MISSION';
-const LEAVE_MISSION = 'space-travelers-hub/missions/LEAVE_MISSION';
+// ACTIONS
+const SET_MISSION = 'missionsStore/missions/SET_MISSION';
+const RESERVE_MISSION = 'missionsStore/missions/RESERVE_MISSION';
 
-const initialState = [];
-
-export const loadMissions = () => async (dispatch) => {
-  const getResult = await getMissions();
-  const missions = getResult.map((mission) => ({
-    id: mission.mission_id,
-    name: mission.mission_name,
-    description: mission.description,
-  }));
-
-  if (missions) {
-    dispatch({
-      type: LOAD_MISSIONS,
-      payload: missions,
-    });
-  }
+const initialState = {
+  missions: [],
 };
 
-export const joinMission = (mission) => ({
-  type: JOIN_MISSION,
-  payload: mission,
+// ACTIONS CREATORS
+
+export const missionArray = (response) => {
+  response.map((mission) => (
+    initialState.missions.push({
+      id: mission.mission_id,
+      name: mission.mission_name,
+      description: mission.description,
+    })));
+  return initialState;
+};
+
+export const missionReserve = (payload) => ({
+  type: RESERVE_MISSION,
+  payload,
 });
 
-export const leaveMission = (mission) => ({
-  type: LEAVE_MISSION,
-  payload: mission,
-});
+export const setMission = () => async (dispatch) => {
+  fetch(url)
+    .then((rawResponse) => rawResponse.json())
+    .then((response) => dispatch({
+      type: SET_MISSION,
+      payload: missionArray(response),
+    }));
+};
 
-const missionsReducer = (state = initialState, action) => {
+// REDUCER
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOAD_MISSIONS:
-      return {
-        ...state,
-        missions: action.payload,
-      };
-    case JOIN_MISSION:
-      return {
-        ...state,
-        missions: state.missions.map((mission) => {
-          if (mission.id !== action.payload) {
-            return mission;
-          }
-          return { ...mission, reserved: true };
-        }),
-      };
-    case LEAVE_MISSION:
-      return {
-        ...state,
-        missions: state.missions.map((mission) => {
-          if (mission.id !== action.payload) {
-            return mission;
-          }
-          return { ...mission, reserved: false };
-        }),
-      };
+    case SET_MISSION: {
+      return { ...action.payload };
+    }
+    case RESERVE_MISSION: {
+      const newState = state.missions.map((mission) => (mission.id !== action.payload
+        ? mission : { ...mission, reserved: !mission.reserved }));
+      return { ...state, missions: newState };
+    }
     default:
       return state;
   }
 };
 
-export default missionsReducer;
+export default reducer;
