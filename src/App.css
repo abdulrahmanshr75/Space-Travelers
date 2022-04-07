@@ -9,10 +9,11 @@ body {
 
 ul {
   list-style: none;
+  margin-bottom: 0;
+  padding: 0;
 }
 
 .App {
-<<<<<<< HEAD
   width: 100%;
   margin: 0 auto;
 }
@@ -22,9 +23,9 @@ ul {
 }
 
 .navBar {
-  width: 100%;
-  border-bottom: 1px solid;
-  margin-bottom: 2rem;
+  width: 98%;
+  border-bottom: 2px solid rgb(219, 219, 219);
+  margin: 0 auto;
 }
 
 .navWrap {
@@ -36,23 +37,10 @@ ul {
   padding: 0.8rem 0;
 }
 
-=======
-  width: 90%;
-  margin: 0 auto;
+.bg-badge {
+  background-color: #18a2b8 !important;
 }
 
-.logoImg {
-  width: 50px;
-}
-
-.navBar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 0;
-}
-
->>>>>>> 356bd0536886f245e34226d38176bfa83baa0628
 .headerWrap {
   display: flex;
   align-items: center;
@@ -63,7 +51,6 @@ ul {
   display: flex;
   align-items: center;
   column-gap: 1rem;
-<<<<<<< HEAD
 }
 
 .navLink {
@@ -81,14 +68,111 @@ ul {
 a {
   text-decoration: none;
   color: #0a7fff;
-=======
 }
 
-.navLink {
-  padding: 0 0.5rem;
+.rocketImg {
+  width: 250px;
+  height: 200px;
 }
 
-.navLink:last-child {
-  border-left: 2px solid;
->>>>>>> 356bd0536886f245e34226d38176bfa83baa0628
+.rocketWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 2rem;
+  width: 80%;
+  margin: 4rem auto;
+}
+
+.rocketName {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.reserveBadge {
+  background-color: rgb(81, 167, 170);
+  color: #fff;
+  padding: 0.1rem 0.5rem;
+  margin-right: 0.5rem;
+  font-size: 15px;
+  border-radius: 4px;
+}
+
+.cancelReserveBtn {
+  background-color: transparent;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px #888;
+  font-weight: bold;
+}
+
+.reserveBtn {
+  background-color: #0a7fff;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1.5rem;
+  box-shadow: 2px 2px 2px #888;
+  font-weight: bold;
+}
+
+.myProfile {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.rocketProfileWrap {
+  width: 49%;
+}
+
+.myRockets {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.myRocketLists {
+  display: flex;
+  flex-direction: column;
+}
+
+.myRocketList {
+  border: 1px solid #333;
+  padding: 0.7rem 0.7rem 1.2rem 0.7rem;
+}
+
+.noReservation {
+  background-color: #0a7fff;
+  color: #fff;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .rocketWrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    column-gap: 2rem;
+    width: 90%;
+    margin: 4rem auto;
+  }
+
+  .rocketImg {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .navWrap {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+
+  .navLink:last-child {
+    border-left: none;
+  }
 }
